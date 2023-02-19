@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <p id="result">result</p>
+
+    <button type="button" onclick="get_data();">Get Data</button>
+
+    <script type="text/javascript">
+        const api = "http://127.0.0.1:8000/api/users/?skip=0&limit=100"  // either 3000 for nodejs or 8000 for fastapi
+
+        var myHeaders = new Headers();
+        myHeaders.append("accept", "application/json");
+
+        var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+
+        function get_data() {
+            
+            // REST API REQUEST
+            fetch(api, requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                console.log(result)
+                document.getElementById("result").innerHTML = result;
+            })
+            .catch(error => console.log('error', error));
+
+        }
+    </script>
+</body>
+</html>

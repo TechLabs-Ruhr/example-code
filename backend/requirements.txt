@@ -1,0 +1,15 @@
+# API related stuff
+fastapi
+uvicorn
+pydantic
+
+# Database related
+sqlalchemy
+
+# For postgresql if used
+psycopg2-binary
+
+# sqlite is taken from the standard library
+
+# Fake data
+faker
