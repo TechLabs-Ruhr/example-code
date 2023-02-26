@@ -1,0 +1,122 @@
+<html lang="en"><head>
+    <title>Vis Network | Labels | Multifont Labels</title>
+
+    <script type="text/javascript" src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"></script>
+
+    <style type="text/css">
+      #mynetwork {
+        width: 600px;
+        height: 400px;
+        border: 1px solid lightgray;
+      }
+      code {
+        font-size: 15px;
+      }
+      p {
+        max-width: 600px;
+      }
+      .indented {
+        margin-left: 30px;
+      }
+      table {
+        border-collapse: collapse;
+        font-family: sans-serif;
+      }
+      table code {
+        background: #dddddd;
+      }
+      th,
+      td {
+        border: 1px solid #aaaaaa;
+        text-align: center;
+        padding: 5px;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="mynetwork"><div class="vis-network" tabindex="0" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;"><canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="600" height="400"></canvas></div></div>
+
+    <p>
+        Find more examples on: 
+        <oi>
+            <li><a href="https://visjs.github.io/vis-network/examples/">https://visjs.github.io/vis-network/examples/</a></li>
+            <li><a href="https://visjs.github.io/vis-network/examples/network/events/interactionEvents.html">Example with on click event handler</a></li>
+            <li><a href="https://visjs.github.io/vis-network/examples/network/labels/labelMultifont.html">This example with description</a></li>
+        </oi>
+        The data used for the graph could be also dynamically fetched from the backend via REST API.
+    </p>
+
+
+    <script type="text/javascript">
+      // List job offers
+      var nodes = [
+        { id: 1, label: "Management", x: -120, y: -120 },
+        {
+          id: 2,
+          font: { multi: true },
+          label:
+            "Project Engineer III <b>This</b> is a\n<i>default</i> <b><i>multi-</i>font</b> <code>label</code>",
+          x: -40,
+          y: -40,
+        },
+        {
+          id: 3,
+          font: { multi: "html", size: 20 },
+          label:
+            "HEAD of Pilot Plant <b>This</b> is an\n<i>html</i> <b><i>multi-</i>font</b> <code>label</code>",
+          x: 40,
+          y: 40,
+        },
+        {
+          id: 4,
+          font: { multi: "md", face: "georgia" },
+          label: "Head of Engineering Region II *This* is a\n_markdown_ *_multi-_ font* `label`",
+          x: 120,
+          y: 120,
+        },
+      ];
+      
+      // Describe graph connection / relations of job offers
+      var edges = [
+        { from: 1, to: 2, label: "Move to" },
+        {
+          from: 2,
+          to: 3,
+          font: { multi: true },
+          label: "Move to <b>html</b>",
+        },
+        { from: 3, to: 4, font: { multi: "md" }, label: "Move to *html* to _md_" },
+      ];
+
+      var container = document.getElementById("mynetwork");
+      var data = {
+        nodes: nodes,
+        edges: edges,
+      };
+      var options = {
+        edges: {
+          font: {
+            size: 12,
+          },
+        },
+        nodes: {
+          shape: "box",
+          font: {
+            bold: {
+              color: "#0077aa",
+            },
+          },
+        },
+        physics: {
+          enabled: false,
+        },
+      };
+
+      // Create graph
+      var network = new vis.Network(container, data, options);
+    </script>
+</body>
+</html>
