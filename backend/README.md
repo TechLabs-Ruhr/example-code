@@ -1,11 +1,13 @@
 # Backend FastAPI Example
 
 ## Getting started
-python3 -m venv venv && source venv/bin/activate
+Open a terminal and navigate into this directory. Your command like should say something like `..../example-code/backend/`.
 
-pip3 install -r requirements.txt
+`python3 -m venv venv && source venv/bin/activate`
 
-start python application
+`pip3 install -r requirements.txt`
+
+#### start python application
 
 either via VSCode or via `python3 main.py`
 
